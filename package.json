@@ -1,0 +1,11 @@
+{
+  "name": "node-blog",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "ADI <569643843@qq.com>",
+  "license": "MIT",
+  "dependencies": {
+    "mysql": "^2.18.1",
+    "redis": "^3.0.2"
+  }
+}
