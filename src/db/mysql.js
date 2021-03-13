@@ -2,7 +2,7 @@
  * @Author: ADI
  * @Date: 2021-03-06 12:05:26
  * @LastEditors: ADI
- * @LastEditTime: 2021-03-07 10:31:41
+ * @LastEditTime: 2021-03-13 12:16:51
  */
 const mysql = require("mysql");
 const { MYSQL_CONF } = require("../conf/db");
@@ -22,7 +22,7 @@ function exec(sql) {
     });
   });
 }
-
 module.exports = {
-  exec
+  exec,
+  escape: mysql.escape,
 };

@@ -2,11 +2,12 @@
  * @Author: ADI
  * @Date: 2021-02-27 11:39:57
  * @LastEditors: ADI
- * @LastEditTime: 2021-03-13 09:40:06
+ * @LastEditTime: 2021-03-13 12:15:05
  */
 const querystring = require("querystring");
 const handleBlogRouter = require("./src/route/blog");
 const handleUserRouter = require("./src/route/user");
+const { access } = require("./src/utils/log");
 const getPostData = req => {
   return new Promise((resolve, reject) => {
     const { method } = req;
@@ -36,6 +37,7 @@ const getCoolieExpires = () => {
 };
 
 module.exports.serverHandle = async (req, res) => {
+  access(`${req.method} -- ${req.url} -- ${req.headers["user-agent"]}`);
   const { method, url, query, headers } = req;
   res.setHeader("Content-type", "application/json");
   req.path = url.split("?")[0];
@@ -59,7 +61,6 @@ module.exports.serverHandle = async (req, res) => {
     req.cookie.sessionId = sessionId;
   }
   req.session = (await get(sessionId)) || {};
-  console.log("req.session", req.session, sessionId);
 
   getPostData(req).then(postData => {
     req.body = postData;
@@ -80,7 +81,6 @@ module.exports.serverHandle = async (req, res) => {
 
     // 处理blog路由
     const blogResult = handleBlogRouter(req, res);
-    console.log("blogResult", blogResult);
     if (blogResult) {
       blogResult.then(blogData => {
         if (needSetCookie) {

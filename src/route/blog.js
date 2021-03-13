@@ -2,7 +2,7 @@
  * @Author: ADI
  * @Date: 2021-02-27 12:34:07
  * @LastEditors: ADI
- * @LastEditTime: 2021-03-13 09:57:42
+ * @LastEditTime: 2021-03-13 12:15:25
  */
 const {
   getList,
@@ -18,7 +18,6 @@ const { get, set } = require("../db/redis");
 const loginCheck = req => {
   if (req.cookie.sessionId) {
     return get(req.cookie.sessionId).then(result => {
-      console.log("loginCheck", result);
       if (result !== null) {
         return;
       }
@@ -101,7 +100,6 @@ const handleBlogRouter = async (req, res) => {
       return loginCheckResult;
     }
     req.body.author = req.session.username;
-    console.log("req.session.username", req.session.username);
     const result = newBlog(req.body);
     return result
       .then(data => {
