@@ -2,7 +2,7 @@
  * @Author: ADI
  * @Date: 2021-02-28 13:19:31
  * @LastEditors: ADI
- * @LastEditTime: 2021-03-07 10:31:30
+ * @LastEditTime: 2021-03-13 09:42:17
  */
 const { exec } = require("../db/mysql");
 
@@ -18,21 +18,26 @@ const getList = (author, keyword) => {
   return exec(sql);
 };
 
-const getDetail = (id) => {
+const getDetail = id => {
   const sql = `select * from blogs where id='${id}'`;
-  return exec(sql).then((rows) => {
+  return exec(sql).then(rows => {
     return rows[0];
   });
 };
 
 const newBlog = (blogData = {}) => {
-  const { title, content, createtime, author } = blogData;
+  const {
+    title,
+    content,
+    createtime = new Date().getTime(),
+    author,
+  } = blogData;
   const sql = `
     insert into blogs (title, content, createtime, author) values ('${title}', '${content}', ${createtime}, '${author}')
   `;
-  return exec(sql).then((insertData) => {
+  return exec(sql).then(insertData => {
     return {
-      id: insertData.insertId
+      id: insertData.insertId,
     };
   });
 };
@@ -42,7 +47,7 @@ const updateBlog = (id, blogData = {}) => {
   const sql = `
     update blogs set title='${title}', content='${content}' where id='${id}'
   `;
-  return exec(sql).then((updateData) => {
+  return exec(sql).then(updateData => {
     if (updateData.affectedRows > 0) {
       return true;
     } else {
@@ -55,7 +60,7 @@ const delBlog = (id, author) => {
   const sql = `
     delete from blogs where id='${id}' and author='${author}'
   `;
-  return exec(sql).then((data) => {
+  return exec(sql).then(data => {
     if (data.affectedRows > 0) {
       return true;
     } else {
@@ -69,5 +74,5 @@ module.exports = {
   getDetail,
   newBlog,
   updateBlog,
-  delBlog
+  delBlog,
 };
