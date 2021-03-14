@@ -1,8 +1,19 @@
-<!--
- * @Author: ADI
- * @Date: 2021-03-07 12:46:26
- * @LastEditors: ADI
- * @LastEditTime: 2021-03-07 12:46:26
--->
+<!-- Nginx -->
 
-https://github.com/uwspstar/Side-Projects/tree/2c1d31472c92e2a816e476b55380e1944966a6f7/Nodejs-Projects/Blog-Step-by-Step
+查看进程
+
+```
+ps -ef | grep nginx
+```
+
+<!-- Mac系统查看端口占用和杀死进程 -->
+
+```
+lsof -i tcp:8080
+```
+
+<!-- 启动服务 -->
+
+- nginx -P 8082
+- http-server -P 8081
+- server -P 8080

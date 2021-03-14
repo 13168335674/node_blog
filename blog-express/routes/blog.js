@@ -8,18 +8,19 @@ const {
   delBlog,
 } = require("../controller/blog");
 const { SuccessModel, ErrorModel } = require("../model/resModel");
+const loginCheck = require("../middleware/loginCheck");
 
 // 博客列表
 router.get("/list", function (req, res, next) {
   const { keyword = "" } = req.query;
   let author = req.query.author;
-  // if (req.query.isadmin) {
-  //   const loginCheckResult = await loginCheck(req);
-  //   if (loginCheckResult) {
-  //     return loginCheckResult;
-  //   }
-  //   author = req.session.username;
-  // }
+  if (req.query.isadmin) {
+    if (req.session.username == null) {
+      res.json(new ErrorModel("未登录"));
+      return;
+    }
+    author = req.session.username;
+  }
   const result = getList(author, keyword);
   return result
     .then(listData => {
@@ -43,11 +44,7 @@ router.get("/detail", function (req, res, next) {
 });
 
 // 新建博客
-router.get("/new", function (req, res, next) {
-  // const loginCheckResult = await loginCheck(req);
-  // if (loginCheckResult) {
-  //   return loginCheckResult;
-  // }
+router.post("/new", loginCheck, function (req, res, next) {
   req.body.author = req.session.username;
   const result = newBlog(req.body);
   return result
@@ -59,12 +56,8 @@ router.get("/new", function (req, res, next) {
     });
 });
 // 更新博客
-router.get("/update", function (req, res, next) {
-  // const loginCheckResult = await loginCheck(req);
-  // if (loginCheckResult) {
-  //   return loginCheckResult;
-  // }
-  const result = updateBlog(id, req.body);
+router.post("/update", loginCheck, function (req, res, next) {
+  const result = updateBlog(req.query.id, req.body);
   return result.then(val => {
     if (val) {
       res.json(new SuccessModel());
@@ -74,12 +67,8 @@ router.get("/update", function (req, res, next) {
   });
 });
 // 删除博客
-router.get("/del", function (req, res, next) {
-  // const loginCheckResult = await loginCheck(req);
-  // if (loginCheckResult) {
-  //   return loginCheckResult;
-  // }
-  const result = delBlog(id, req.session.username);
+router.post("/del", loginCheck, function (req, res, next) {
+  const result = delBlog(req.query.id, req.session.username);
   return result.then(val => {
     if (val) {
       res.json(new SuccessModel());
