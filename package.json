@@ -1,7 +1,7 @@
 {
-  "name": "node-blog",
+  "name": "blog",
   "version": "1.0.0",
-  "description": "",
+  "description": "<!--  * @Author: ADI  * @Date: 2021-03-07 12:46:26  * @LastEditors: ADI  * @LastEditTime: 2021-03-07 12:46:26 -->",
   "main": "/bin/www.js",
   "scripts": {
     "dev": "cross-env NODE_ENV=dev nodemon ./bin/www.js",
@@ -18,5 +18,16 @@
     "mysql": "^2.18.1",
     "redis": "^3.0.2",
     "xss": "^1.0.8"
-  }
+  },
+  "bin": {
+    "blog": "www.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/13168335674/node_blog_demo.git"
+  },
+  "bugs": {
+    "url": "https://github.com/13168335674/node_blog_demo/issues"
+  },
+  "homepage": "https://github.com/13168335674/node_blog_demo#readme"
 }
