@@ -1,0 +1,12 @@
+{
+  "name": "pm2-test",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=dev pm2 start pm2.conf.json"
+  },
+  "dependencies": {
+    "cross-env": "^7.0.3"
+  }
+}

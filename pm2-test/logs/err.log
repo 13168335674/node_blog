@@ -1,0 +1,41 @@
+222 /
+222 /
+222 /
+222 /err
+Error: err
+    at Server.<anonymous> (/Users/zstop/Documents/job/Demo/node-blog/pm2-test/app.js:13:11)
+    at Server.emit (events.js:315:20)
+    at Server.<anonymous> (/Users/zstop/.config/yarn/global/node_modules/@pm2/io/build/main/metrics/httpMetrics.js:166:33)
+    at parserOnIncoming (_http_server.js:874:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:126:17)
+222 /err
+Error: err
+    at Server.<anonymous> (/Users/zstop/Documents/job/Demo/node-blog/pm2-test/app.js:13:11)
+    at Server.emit (events.js:315:20)
+    at Server.<anonymous> (/Users/zstop/.config/yarn/global/node_modules/@pm2/io/build/main/metrics/httpMetrics.js:166:33)
+    at parserOnIncoming (_http_server.js:874:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:126:17)
+222 /
+222 /
+222 /
+222 /
+222 /
+222 /
+222 /err
+Error: err
+    at Server.<anonymous> (/Users/zstop/Documents/job/Demo/node-blog/pm2-test/app.js:13:11)
+    at Server.emit (events.js:315:20)
+    at Server.<anonymous> (/Users/zstop/.config/yarn/global/node_modules/@pm2/io/build/main/metrics/httpMetrics.js:166:33)
+    at parserOnIncoming (_http_server.js:874:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:126:17)
+222 /err
+Error: err
+    at Server.<anonymous> (/Users/zstop/Documents/job/Demo/node-blog/pm2-test/app.js:13:11)
+    at Server.emit (events.js:315:20)
+    at Server.<anonymous> (/Users/zstop/.config/yarn/global/node_modules/@pm2/io/build/main/metrics/httpMetrics.js:166:33)
+    at parserOnIncoming (_http_server.js:874:12)
+    at HTTPParser.parserOnHeadersComplete (_http_common.js:126:17)
+222 /
+2021-03-16 20:07:53: 222 /
+2021-03-16 20:07:53: 222 /
+2021-03-16 20:07:53: 222 /
